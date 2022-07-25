@@ -1,8 +1,23 @@
+# frozen_string_literal: true
+
+# Pages Controller
 class PagesController < ApplicationController
-  def index(dd: params[:dd].to_f, ds: params[:ds].to_f)
-    @vd = (7 / (2.4 + dd)) * dd**3
-    @vs = (7 / (2.4 + ds)) * ds**3
-    calc = (@vd - @vs) / @vd
-    calc.nan? ? "" : @feve = (calc*100).to_i
+  def index
+    heart_diagnosis = HeartDiagnosisService.new(heart_params)
+    @heart_data = { diastole_volume: heart_diagnosis.diastole,
+                    sistole_diameter: heart_diagnosis.sistole,
+                    feve: heart_diagnosis.feve }
+  end
+
+  private
+
+  def heart_params
+    return default_heart_params unless params[:stats]
+
+    params.require(:stats).permit(:diastole, :sistole)
+  end
+
+  def default_heart_params
+    { diastole: 0, sistole: 0 }
   end
 end
