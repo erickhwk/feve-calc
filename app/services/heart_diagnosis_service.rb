@@ -1,5 +1,7 @@
-class HeartDiagnosisService
+# frozen_string_literal: true
 
+# This class calculates Feve
+class HeartDiagnosisService
   attr_accessor :diastole, :sistole, :feve
 
   def initialize(**params)
