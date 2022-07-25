@@ -3,9 +3,9 @@
 # Pages Controller
 class PagesController < ApplicationController
   def index
-    heart_diagnosis = HeartDiagnosisService.new(heart_params)
+    heart_diagnosis = HeartDiagnosisService.new(**heart_params)
     @heart_data = { diastole_volume: heart_diagnosis.diastole,
-                    sistole_diameter: heart_diagnosis.sistole,
+                    sistole_volume: heart_diagnosis.sistole,
                     feve: heart_diagnosis.feve }
   end
 

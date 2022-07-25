@@ -1,15 +1,18 @@
 <nav></nav>
 
-<main class="wrapper">
-  <form action="/">
-    <label for="dd">Diâmetro Diastólico</label>
-    <input type="text" name="dd" required>
-    <label for="ds">Diâmetro Sistólico</label>
-    <input type="text" name="ds" required>
-    <button type="submit">Calcular</button>
-  </form>
 
-  <p>Volume Diastólico: <%= @vd.round(2) %></p>
-  <p>Volume Sistólico: <%= @vs.round(2) %></p>
-  <p>FEVE: <%= "#{@feve}%" %></p>
+<main class="wrapper">
+  <%= form_with url: root_path, scope: :stats, method: :get, data: { turbo: false } do |f| %>
+    <%= f.label :diastole, 'Insira o diâmetro diastólico' %>
+    <%= f.text_field :diastole, required: true %>
+    <%= f.label :sistole, 'Insira o diâmetro sistólico' %>
+    <%= f.text_field :sistole, required: true %>
+
+
+    <button type='submit'>Calcular</button>
+  <% end %>
+
+  <p>Volume Diastólico: <%= @heart_data[:diastole_volume].round(2) %></p>
+  <p>Volume Sistólico: <%= @heart_data[:sistole_volume].round(2) %></p>
+  <p>FEVE: <%= @heart_data[:feve] %>%</p>
 </main>

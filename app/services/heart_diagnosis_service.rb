@@ -2,8 +2,8 @@ class HeartDiagnosisService
 
   attr_accessor :diastole, :sistole, :feve
 
-  def initialize(params)
-    params.symbolize_keys
+  def initialize(**params)
+    params.symbolize_keys!
     @diastole = diastole_volume(params[:diastole].to_f)
     @sistole = sistole_volume(params[:sistole].to_f)
     @feve = feve_calculation
