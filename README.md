@@ -13,6 +13,6 @@ A aplicação tem por objetivo automatizar esse cálculo através do input dos d
 Para execução do projeto são necessários:
 
 * Ruby versão 3.1.2
-* No diretório do projeto, instalar as dependências contidas no `Gemfile` com o comando `bundle install`
+* No diretório do projeto, instalar as dependências contidas no `Gemfile` com o comando `bundle install`.
 * Crie a database com o comando `rails db:create`. O sistema utilizado é o PostgreSQL.
 * Com todas as dependências instaladas, execute `rails s` no seu terminal e acesse o `localhost:3000` no navegador.
